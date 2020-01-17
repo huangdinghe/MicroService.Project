@@ -26,10 +26,10 @@ namespace MicroService.ServiceInstance.Utility
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
                 ID="service_"+Guid.NewGuid(),    
-                Name="service_group",
+                Name="humocloud_service",
                 Address=ip,
                 Port=port,
-                Tags=null,
+                Tags=null,           
             });
         }
 

@@ -18,7 +18,7 @@ namespace MicroService.ServiceInstance.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            _logger.LogInformation(DateTime.Now+"：服务健康检查");
+            _logger.LogInformation(DateTime.Now+"：Consul执行对服务ServiceInstance的健康检查");
             return Ok();
         }
     }

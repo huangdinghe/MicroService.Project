@@ -18,22 +18,22 @@ namespace MicroService.ServiceInstance.Utility
                 c.Datacenter = "dc1";
             });
 
-            //命令行传递启动参数
+            #region 命令行传递启动参数记录文本
             //consul.exe agent -dev
-            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5726"  --ip="127.0.0.1"  --port=5726 --weight=1
-            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5727"  --ip="127.0.0.1"  --port=5727 --weight=2
-            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5728"  --ip="127.0.0.1"  --port=5728 --weight=3
+            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5726"  --ip="127.0.0.1"  --port=5726
+            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5727"  --ip="127.0.0.1"  --port=5727
+            //dotnet MicroService.ServiceInstance.dll --urls="http://*:5728"  --ip="127.0.0.1"  --port=5728
+            #endregion
 
             string ip = configuration["ip"] == null ? "127.0.01" : configuration["ip"];   //Ip地址
             int port = int.Parse(configuration["port"] == null ? "5726" : configuration["port"]);    //端口号
-            int weight = int.Parse(configuration["weight"] == null ? "1" : configuration["weight"]);       //权重
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
                 ID = Guid.NewGuid().ToString(),
                 Name = "humocloud_service_instance",
                 Address = ip,
                 Port = port,
-                Tags = new string[] { weight.ToString() },
+                Tags = new string[] { "instance" },
                 Check = new AgentServiceCheck()
                 {
                     Interval = TimeSpan.FromSeconds(60),

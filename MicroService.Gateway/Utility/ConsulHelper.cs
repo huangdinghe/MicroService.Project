@@ -21,8 +21,11 @@ namespace MicroService.Gateway.Utility
                 c.Datacenter = "dc1";
             });
 
-            //命令行传递启动参数
+            #region 命令行传递启动参数记录文本
+            //consul.exe agent -dev
             //dotnet MicroService.Gateway.dll --urls="http://*:6300"  --ip="127.0.0.1"  --port=6300
+            #endregion
+
             string ip = configuration["ip"] == null ? "127.0.01" : configuration["ip"];   //Ip地址
             int port = int.Parse(configuration["port"] == null ? "6300" : configuration["port"]);    //端口号
          

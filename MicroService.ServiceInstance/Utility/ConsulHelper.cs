@@ -21,12 +21,12 @@ namespace MicroService.ServiceInstance.Utility
             });
 
             //命令行传递启动参数
-            string ip = configuration["ip"];
-            int port = int.Parse(configuration["port"]);
+            string ip = configuration["ip"]==null?"127.0.01": configuration["ip"];
+            int port = int.Parse(configuration["port"] == null ? "5726" : configuration["port"]);
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
-                ID="service_"+Guid.NewGuid(),    
-                Name="humocloud_service",
+                ID="Service_"+Guid.NewGuid(),    
+                Name="HumoCloudService",
                 Address=ip,
                 Port=port,
                 Tags=null,           

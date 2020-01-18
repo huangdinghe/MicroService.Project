@@ -25,11 +25,11 @@ namespace MicroService.Client.Utility
             int port = int.Parse(configuration["port"]);
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
-                ID="service_"+Guid.NewGuid(),    
-                Name="service_group",
-                Address=ip,
-                Port=port,
-                Tags=null,
+                ID = "Service_" + Guid.NewGuid(),
+                Name = "HumoCloudService",
+                Address = ip,
+                Port = port,
+                Tags = null,
             });
         }
 

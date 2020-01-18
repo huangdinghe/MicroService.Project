@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MicroService.Gateway.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +34,11 @@ namespace MicroService.Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //只启动Ocelot中间件
+            //启动Ocelot中间件
             app.UseOcelot();
+
+            //Consul服务注册
+            this.Configuration.ConsulRegist();
         }
     }
 }

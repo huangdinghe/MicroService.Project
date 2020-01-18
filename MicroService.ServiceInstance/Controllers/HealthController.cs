@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace MicroService.ServiceInstance.Controllers
 {
@@ -17,6 +18,7 @@ namespace MicroService.ServiceInstance.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
+            _logger.LogInformation(DateTime.Now+"：服务健康检查");
             return Ok();
         }
     }

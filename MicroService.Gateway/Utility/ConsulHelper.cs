@@ -28,8 +28,8 @@ namespace MicroService.Gateway.Utility
          
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
-                ID = "Service_" + Guid.NewGuid(),
-                Name = "HumoCloudGateWayService",
+                ID = Guid.NewGuid().ToString(),
+                Name = "humocloud_service_gateway",
                 Address = ip,
                 Port = port,
                 Tags = new string[] { "gateway" }

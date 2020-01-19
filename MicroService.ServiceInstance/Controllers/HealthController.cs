@@ -15,6 +15,10 @@ namespace MicroService.ServiceInstance.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// 健康检测调用接口
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Index")]
         public IActionResult Index()
@@ -23,13 +27,18 @@ namespace MicroService.ServiceInstance.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        /// 熔断测试接口
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("polly")]
         public async Task<string> polly()
         {
             _logger.LogInformation(DateTime.Now + "：实例服务熔断测试");
             await Task.Delay(6000);
-            return "wait 6000 polly";
+            return "等待6秒后返回的结果";
         }
     }
 }

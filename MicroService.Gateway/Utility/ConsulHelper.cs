@@ -20,11 +20,11 @@ namespace MicroService.Gateway.Utility
 
             #region 命令行传递启动参数记录文本
             //consul.exe agent -dev
-            //dotnet MicroService.Gateway.dll --urls="http://*:6300"  --ip="127.0.0.1"  --port=6300
+            //dotnet MicroService.Gateway.dll --urls="http://*:6299"  --ip="127.0.0.1"  --port=6299
             #endregion
 
             string ip = configuration["ip"] == null ? "127.0.0.1" : configuration["ip"];   //Ip地址
-            int port = int.Parse(configuration["port"] == null ? "6300" : configuration["port"]);    //端口号
+            int port = int.Parse(configuration["port"] == null ? "6299" : configuration["port"]);    //端口号
 
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {

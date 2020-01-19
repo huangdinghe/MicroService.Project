@@ -1,9 +1,10 @@
 {
+
   "ReRoutes": [
     {
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/T/{url}",
+      "UpstreamPathTemplate": "/humo/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "ServiceName": "humocloud_service_instance",
       "LoadBalancerOptions": {
@@ -12,6 +13,7 @@
       "UseServiceDiscovery": true
     }
   ],
+
   "GlobalConfiguration": {
     "BaseUrl": "http://127.0.0.1:6299",
     "ServiceDiscoveryProvider": {
@@ -20,4 +22,5 @@
       "Type": "Consul"
     }
   }
+
 }

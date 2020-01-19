@@ -1,4 +1,5 @@
 ﻿using MicroService.Client.Models;
+using MicroService.Client.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -16,6 +17,10 @@ namespace MicroService.Client.Controllers
 
         public IActionResult Index()
         {
+            //请求网关地址获取数据
+            var tagert_url = "http://localhost:6299/humo/home";
+            var content = WebApiHelper.InvokeApi(tagert_url);
+            ViewBag.data = content;
             return View();
         }
 

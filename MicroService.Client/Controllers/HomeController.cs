@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MicroService.Client.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MicroService.Client.Models;
-using Consul;
+using System.Diagnostics;
 
 namespace MicroService.Client.Controllers
 {
@@ -21,22 +16,7 @@ namespace MicroService.Client.Controllers
 
         public IActionResult Index()
         {
-            //发现服务实例
-            //using (ConsulClient client = new ConsulClient(c =>
-            //{
-            //    c.Address = new Uri("http://localhost:8500");
-            //    c.Datacenter = "dc1";
-            //}))
-            //{
-            //    var dictionary = client.Agent.Services().Result.Response;
-            //    foreach (var keyValuePair in dictionary)
-            //    {
-            //        AgentService agentService = keyValuePair.Value;
-                    
-            //    }
-            //}
-
-                return View();
+            return View();
         }
 
         public IActionResult Privacy()

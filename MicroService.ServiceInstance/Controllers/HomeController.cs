@@ -25,7 +25,7 @@ namespace MicroService.ServiceInstance.Controllers
         public string Get()
         {
             int port = int.Parse(_configuration["port"] == null ? "5726" : _configuration["port"]);
-            return "请求服务实例端口为："+ port;
+            return DateTime.Now+"  请求服务实例端口为："+ port;
         }
 
     }

@@ -10,7 +10,10 @@
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
-      "UseServiceDiscovery": true
+      "UseServiceDiscovery": true,
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      }
     }
   ],
 

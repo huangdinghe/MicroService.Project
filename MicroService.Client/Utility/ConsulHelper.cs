@@ -47,6 +47,26 @@ namespace MicroService.Client.Utility
 
 
 
-        
+        /// <summary>
+        /// 服务发现
+        /// </summary>
+        public static void SearchServer()
+        {
+            using (ConsulClient client = new ConsulClient(c =>
+            {
+                c.Address = new Uri("http://localhost:8500");
+                c.Datacenter = "dc1";
+            }))
+            {
+                var dictionary = client.Agent.Services().Result.Response;
+                foreach (var keyValuePair in dictionary)
+                {
+                    AgentService agentService = keyValuePair.Value;
+
+                }
+            }
+        }
+
+
     }
 }

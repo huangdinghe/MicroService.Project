@@ -26,7 +26,7 @@ namespace MicroService.Gateway.Utility
             //dotnet MicroService.Gateway.dll --urls="http://*:6300"  --ip="127.0.0.1"  --port=6300
             #endregion
 
-            string ip = configuration["ip"] == null ? "127.0.01" : configuration["ip"];   //Ip地址
+            string ip = configuration["ip"] == null ? "127.0.0.1" : configuration["ip"];   //Ip地址
             int port = int.Parse(configuration["port"] == null ? "6300" : configuration["port"]);    //端口号
          
             client.Agent.ServiceRegister(new AgentServiceRegistration()

@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61063",
+      "applicationUrl": "http://localhost:5726",
       "sslPort": 0
     }
   },
@@ -21,7 +21,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/health/index",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5726",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

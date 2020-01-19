@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace MicroService.ServiceInstance.Controllers
 {
@@ -20,6 +21,15 @@ namespace MicroService.ServiceInstance.Controllers
         {
             _logger.LogInformation(DateTime.Now+"：实例服务健康检查");
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("polly")]
+        public async Task<string> polly()
+        {
+            _logger.LogInformation(DateTime.Now + "：实例服务熔断测试");
+            await Task.Delay(6000);
+            return "wait 6000 polly";
         }
     }
 }

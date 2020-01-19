@@ -2,18 +2,26 @@
 
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamPathTemplate": "/api/{url}", //下游地址名
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/humo/{url}",
+      "UpstreamPathTemplate": "/humo/{url}", //上游地址名
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "ServiceName": "humocloud_service_instance",
+      "ServiceName": "humocloud_service_instance", //服务名
       "LoadBalancerOptions": {
-        "Type": "RoundRobin"
+        "Type": "RoundRobin" //轮询方式
       },
       "UseServiceDiscovery": true,
+      //开启缓存请求，每个请求缓存10秒
       "FileCacheOptions": {
         "TtlSeconds": 10
+      },
+      //开启熔断  请求超过1s将会超时，发生三次超时后保持20s熔断
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3, // 发生几次请求异常（比如超时）后进行熔断，该值必须大于0
+        "DurationOfBreak": 20000, // 熔断时间（单位：毫秒）
+        "TimeoutValue": 1000 // 超时时间
       }
+
     }
   ],
 
@@ -22,7 +30,7 @@
     "ServiceDiscoveryProvider": {
       "Host": "localhost",
       "Port": 8500,
-      "Type": "Consul"
+      "Type": "Consul"    
     }
   }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace MicroService.Gateway.Controllers
 {
@@ -15,11 +16,20 @@ namespace MicroService.Gateway.Controllers
         }
 
         [HttpGet]
-        [Route("Index")]
-        public IActionResult Index()
+        [Route("index")]
+        public IActionResult index()
         {
             _logger.LogInformation(DateTime.Now + "：网关服务健康检查");
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("polly")]
+        public async Task<string> polly()
+        {
+            _logger.LogInformation(DateTime.Now + "：网关服务熔断测试");
+            await Task.Delay(6000);
+            return "wait 6000 polly";
         }
     }
 }

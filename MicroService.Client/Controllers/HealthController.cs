@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 
-namespace MicroService.ServiceInstance.Controllers
+namespace MicroService.Client.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,7 +22,7 @@ namespace MicroService.ServiceInstance.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            _logger.LogInformation(DateTime.Now+"：健康检查");
+            _logger.LogInformation(DateTime.Now + "：客户端健康检查");
             return Ok();
         }
     }

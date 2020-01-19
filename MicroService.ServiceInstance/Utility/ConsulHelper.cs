@@ -25,7 +25,7 @@ namespace MicroService.ServiceInstance.Utility
             //dotnet MicroService.ServiceInstance.dll --urls="http://*:5728"  --ip="127.0.0.1"  --port=5728
             #endregion
 
-            string ip = configuration["ip"] == null ? "127.0.01" : configuration["ip"];   //Ip地址
+            string ip = configuration["ip"] == null ? "127.0.0.1" : configuration["ip"];   //Ip地址
             int port = int.Parse(configuration["port"] == null ? "5726" : configuration["port"]);    //端口号
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {

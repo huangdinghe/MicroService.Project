@@ -22,19 +22,19 @@ namespace MicroService.Client.Controllers
         public IActionResult Index()
         {
             //发现服务实例
-            using (ConsulClient client = new ConsulClient(c =>
-            {
-                c.Address = new Uri("http://localhost:8500");
-                c.Datacenter = "dc1";
-            }))
-            {
-                var dictionary = client.Agent.Services().Result.Response;
-                foreach (var keyValuePair in dictionary)
-                {
-                    AgentService agentService = keyValuePair.Value;
+            //using (ConsulClient client = new ConsulClient(c =>
+            //{
+            //    c.Address = new Uri("http://localhost:8500");
+            //    c.Datacenter = "dc1";
+            //}))
+            //{
+            //    var dictionary = client.Agent.Services().Result.Response;
+            //    foreach (var keyValuePair in dictionary)
+            //    {
+            //        AgentService agentService = keyValuePair.Value;
                     
-                }
-            }
+            //    }
+            //}
 
                 return View();
         }

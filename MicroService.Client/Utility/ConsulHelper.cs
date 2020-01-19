@@ -20,17 +20,29 @@ namespace MicroService.Client.Utility
                 c.Datacenter = "dc1";
             });
 
-            //命令行传递启动参数
-            string ip = configuration["ip"];
-            int port = int.Parse(configuration["port"]);
+            #region 命令行传递启动参数记录文本
+            //consul.exe agent -dev
+            // dotnet MicroService.Client.dll --urls="http://*:61025"  --ip="127.0.0.1"  --port=61025
+            #endregion
+
+            string ip = configuration["ip"] == null ? "127.0.0.1" : configuration["ip"];   //Ip地址
+            int port = int.Parse(configuration["port"] == null ? "5000" : configuration["port"]);    //端口号
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
-                ID = "Service_" + Guid.NewGuid(),
-                Name = "HumoCloudService",
+                ID = Guid.NewGuid().ToString(),
+                Name = "humocloud_service_client",
                 Address = ip,
                 Port = port,
-                Tags = null,
+                Tags = new string[] { "client" },
+                Check = new AgentServiceCheck()
+                {
+                    Interval = TimeSpan.FromSeconds(60),
+                    HTTP = $"http://{ip}:{port}/api/health/index",
+                    Timeout = TimeSpan.FromSeconds(5),
+                    DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5)
+                }
             });
+
         }
 
 

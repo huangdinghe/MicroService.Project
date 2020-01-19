@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace MicroService.ServiceInstance.Controllers
+namespace MicroService.Gateway.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,7 +18,7 @@ namespace MicroService.ServiceInstance.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            _logger.LogInformation(DateTime.Now+"：实例服务健康检查");
+            _logger.LogInformation(DateTime.Now + "：网关服务健康检查");
             return Ok();
         }
     }

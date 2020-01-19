@@ -22,7 +22,7 @@ namespace MicroService.Client.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            _logger.LogInformation(DateTime.Now + "：客户端健康检查");
+            _logger.LogInformation(DateTime.Now + "：客户端服务健康检查");
             return Ok();
         }
     }

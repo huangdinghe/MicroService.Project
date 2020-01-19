@@ -1,9 +1,6 @@
 ﻿using Consul;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MicroService.Gateway.Utility
 {
@@ -28,14 +25,21 @@ namespace MicroService.Gateway.Utility
 
             string ip = configuration["ip"] == null ? "127.0.0.1" : configuration["ip"];   //Ip地址
             int port = int.Parse(configuration["port"] == null ? "6300" : configuration["port"]);    //端口号
-         
+
             client.Agent.ServiceRegister(new AgentServiceRegistration()
             {
                 ID = Guid.NewGuid().ToString(),
                 Name = "humocloud_service_gateway",
                 Address = ip,
                 Port = port,
-                Tags = new string[] { "gateway" }
+                Tags = new string[] { "gateway" },
+                Check = new AgentServiceCheck()
+                {
+                    Interval = TimeSpan.FromSeconds(60),
+                    HTTP = $"http://{ip}:{port}/api/health/index",
+                    Timeout = TimeSpan.FromSeconds(5),
+                    DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5)
+                }
             });
         }
     }
